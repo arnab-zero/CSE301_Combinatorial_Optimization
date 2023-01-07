@@ -97,17 +97,18 @@ int main(void){
 
 /*
 
-string1: abcab  => abc      ab
-string2: cba    =>   c  b   a               LCS => ca
+string1: abcab  => abc   ab
+string2: cba    =>   c    ba               LCS => ca
 
 Sample visualization:
-    (a,c) => 0                  (a, cb) => 0                     (a,cba) => 1
-   (ab,c) => 0                  (ab,cb) => 1                    (ab,cba) => 1
-  (abc,c) => 1                (abc, cb) => 1                   (abc,cba) => 1
- (abca,c) => 1                (abca,cb) => 1                  (abca,cba) => 2
-(abcab,c) => 1               (abcab,cb) => 2                 (abcab,cba) => 2
+    (a,c) => 0 (H)                 (a, cb) => 0 (H)                   (a,cba) => 1 (C)
+   (ab,c) => 0 (H)                 (ab,cb) => 1 (C)                  (ab,cba) => 1 (H)
+  (abc,c) => 1 (C)               (abc, cb) => 1 (H)                 (abc,cba) => 1 (H)
+ (abca,c) => 1 (V)               (abca,cb) => 1 (H)                (abca,cba) => 2 (C)
+(abcab,c) => 1 (V)              (abcab,cb) => 2 (C)               (abcab,cba) => 2 (H)
 
 LCS length: 2
+LCS       : cb
 
 */
 
