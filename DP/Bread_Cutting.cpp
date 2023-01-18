@@ -2,21 +2,26 @@
 using namespace std;
 
 #define Length 101              // Keep it greater than the input length
-int table[Length][Length];      // Stores minimum cost for certain cut
+#define vi vector<int>
+vi cuts(Length);
+vector<vi> table(Length, vi(Length, -1));      // Stores minimum cost for certain cut
 
-int min_cost(int start, int finish, int cuts[]){
+int min_cost(int start, int finish){
     int mini = INT_MAX;
 
-    // if(table[cuts[start]][cuts[finish]] != -1)
-    //     return table[cuts[start]][cuts[finish]];
+    if(start>finish)
+        return 0;
+
+    if(table[start][finish] != -1)
+        return table[start][finish];
     
-    for(int i=start+1; i<finish; ++i){
-        int cost = cuts[finish] - cuts[start] + min_cost(start, i, cuts) + min_cost(i, finish, cuts);
+    for(int i=start; i<finish+1; ++i){
+        int cost = cuts[finish+1] - cuts[start-1] + min_cost(start, i-1) + min_cost(i+1, finish);
         if(cost < mini)
             mini = cost;
     }
 
-    table[cuts[start]][cuts[finish]] = mini;        // Memoization
+    table[start][finish] = mini;        // Memoization
     return mini;              // Returns the minimum cost.
 }
 
@@ -25,28 +30,13 @@ int main(void){
     cin>>length>>m;
 
     n = m+2;
-    int cuts[n];        // Stores the points where the cuts should be done
     cuts[0] = 0;
     for(int i=1; i<m+1; ++i){
         cin>>cuts[i];
     }
     cuts[n-1] = length;
 
-    for(int i=0; i<n; ++i){
-        for(int j=0; j<n; ++j){
-            table[i][j] = -1;
-        }
-    }
-
-    for(int i=0; i<n; ++i){
-        table[cuts[i]][cuts[i]] = 0;
-        if(i==n-1)
-            continue;
-        table[cuts[i]][cuts[i+1]] = 0;
-        table[cuts[i+1]][cuts[i]] = 0;
-    }
-
-    int minimum_cost = min_cost(0, n-1, cuts);
+    int minimum_cost = min_cost(1, m);
 
     cout<<minimum_cost<<endl;
 
