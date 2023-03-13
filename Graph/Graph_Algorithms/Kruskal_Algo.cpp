@@ -90,7 +90,7 @@ int main(void){
     cout<<endl<<endl<<"Minimum path weight: "<<minimum_path_weight<<endl;
 
     for(auto i: mst){
-        cout<<i.first<<spc<<i.second<<endl;
+        cout<<(char)(i.first+'a'-1)<<spc<<(char)(i.second+'a'-1)<<endl;
     }
 
     return 0;
