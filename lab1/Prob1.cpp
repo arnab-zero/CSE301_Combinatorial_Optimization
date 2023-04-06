@@ -9,6 +9,15 @@ typedef long long int lli;
 
 // Global 2d vector for storing the adjacency matrix
 vector<vi> v(100, vi (100, INT_MAX));
+int query;  // number of query in each test case
+
+void v_init(){
+    for(int i=0; i<100; ++i){
+        for(int j=0; j<100; ++j){
+            v[i][j] = INT_MAX;
+        }
+    }
+}
 
 // Function for implementing the Floyd-Warshall Algorithm
 void floyd_warshall(int n){
@@ -31,14 +40,19 @@ void floyd_warshall(int n){
     
 }
 
-// main function
-int main(void){
+
+// driver function
+void solve(){
 
     int vertices;       // number of total vertices;
-    cin>>vertices;
-
     int edges;      // number of input edges;
-    cin>>edges;
+
+    cin>>vertices>>edges>>query;
+
+    if(vertices==0 and edges==0 and query==0)
+        exit(1);
+
+    v_init();   // initialize the v vector cells with INT_MAX
 
     // for undirected graph
     // input passed as adjacency list
@@ -65,13 +79,38 @@ int main(void){
     floyd_warshall(vertices+1);
 
     // printing the APSP adjacency matrix
-    cout<<"APSP: "<<endl;
-    for(int i=1; i<vertices+1; ++i){
-        for(int j=1; j<vertices+1; ++j){
-            cout<<v[i][j]<<spc;
+    // cout<<"APSP: "<<endl;
+    // for(int i=1; i<vertices+1; ++i){
+    //     for(int j=1; j<vertices+1; ++j){
+    //         cout<<v[i][j]<<spc;
+    //     }
+    //     cout<<endl;
+    // }
+}
+
+
+// main function
+int main(void){
+
+    freopen("Prob1_input.txt", "r", stdin);
+    freopen("Prob1_output.txt", "w", stdout);
+
+    for(int i=1; ; ++i){
+        solve();
+
+        cout<<"Case #"<<i<<endl;
+        while(query--){
+            int m, n;
+            cin>>m>>n;
+            if(v[m][n] != INT_MAX){
+                cout<<v[m][n]<<endl;
+            }
+            else 
+                cout<<"no path"<<endl;
         }
-        cout<<endl;
     }
+
+
     
     return 0;
 }

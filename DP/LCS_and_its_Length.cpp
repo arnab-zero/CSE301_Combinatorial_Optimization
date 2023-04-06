@@ -33,7 +33,6 @@ int main(void){
                 array[i][j] = array[i-1][j];
                 marker[i][j] = 'V';
             }
-
         }
         else{
             if(str1[i-1] == str2[j-1])
