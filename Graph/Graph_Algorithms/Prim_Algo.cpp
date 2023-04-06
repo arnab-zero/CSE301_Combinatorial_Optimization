@@ -26,8 +26,7 @@ void mst_prim(vector< vector<pair<int, int> > > &adj_list){
 
         for(auto i: adj_list[current.second]){
             if(weight[i.second] > i.first and !vis[i.second]){
-                weight
-[i.second] = i.first;
+                weight[i.second] = i.first;
                 parent[i.second] = current.second;
                 pq.push({i.first, i.second}); 
             }
