@@ -1,0 +1,11 @@
+Considering vertex 1 as the root vertex.
+
+vertex a:  vis: 1	 weight: 2147483647	 parent: _
+vertex b:  vis: 1	 weight: 4	 parent: a
+vertex c:  vis: 1	 weight: 8	 parent: b
+vertex d:  vis: 1	 weight: 7	 parent: c
+vertex e:  vis: 1	 weight: 9	 parent: d
+vertex f:  vis: 1	 weight: 4	 parent: c
+vertex g:  vis: 1	 weight: 2	 parent: f
+vertex h:  vis: 1	 weight: 1	 parent: g
+vertex i:  vis: 1	 weight: 2	 parent: c
