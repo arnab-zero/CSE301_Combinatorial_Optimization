@@ -22,3 +22,6 @@ def eggDrop(n, k):
 n = 2
 k = 36
 print(eggDrop(n, k))
+
+
+# Has same pattern to palindromic partitioning.
