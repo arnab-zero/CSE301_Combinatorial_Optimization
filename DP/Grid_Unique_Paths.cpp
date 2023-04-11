@@ -37,3 +37,14 @@ int main(void){
     
     return 0;
 }
+
+
+/*
+
+Variations
+
+-- Rat in a Maze Problem
+-- Minimum Cost to Cover the given positions in a grid
+-- Maximum size square sub-matrix with all 1s
+
+*/
